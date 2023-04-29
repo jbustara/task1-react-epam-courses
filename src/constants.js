@@ -2,7 +2,13 @@ export const BUTTON_SEARCH_TEXT = 'Search';
 export const BUTTON_CARD_TEXT = 'Show course';
 export const BUTTON_NEW_TEXT = 'Add new course';
 export const BUTTON_HEADER_TEXT = 'Logout';
-export const INPUT_PLACEHOLDER = 'Enter course name';
+export const BUTTON_FORM_COURSE_TEXT = 'Create course';
+export const BUTTON_FORM_AUTHOR_TEXT = 'Create author';
+export const INPUT_PLACEHOLDER_SEARCHBAR = 'Enter course name';
+export const INPUT_PLACEHOLDER_TITLE_FORM = 'Enter title...';
+export const INPUT_PLACEHOLDER_AUTHOR_FORM = 'Enter author name...';
+export const INPUT_PLACEHOLDER_DURATION_FORM = 'Enter duration in minutes';
+export const INPUT_PLACEHOLDER_TEXTAREA_FORM = 'Enter description';
 export const USERNAME = 'Camilo';
 
 export const mockedCoursesList = [

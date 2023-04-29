@@ -10,11 +10,11 @@ import {
 
 import './courses.css';
 import { useState } from 'react';
+import CreateCourse from '../CreateCourse/CreateCourse';
 
 const Courses = () => {
 	const [list, setList] = useState(mockedCoursesList);
 	const handlerSearchBar = (data) => {
-		alert(data);
 		setList(
 			mockedCoursesList.filter(
 				(course) =>
