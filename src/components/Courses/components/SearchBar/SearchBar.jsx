@@ -4,12 +4,24 @@ import Button from '../../../../common/Button/Button';
 import { BUTTON_SEARCH_TEXT, INPUT_PLACEHOLDER } from '../../../../constants';
 
 import './searchBar.css';
+import { useState } from 'react';
 
-const SearchBar = ({ onClick }) => {
+const SearchBar = ({ handlerButtonClick }) => {
+	const [query, setQuery] = useState('');
+	const handlerInput = (data) => {
+		setQuery(data);
+	};
 	return (
 		<div className='searchBar'>
-			<Input placeholder={INPUT_PLACEHOLDER} fname='courseName' />
-			<Button text={BUTTON_SEARCH_TEXT} onClick={onClick} />
+			<Input
+				placeholder={INPUT_PLACEHOLDER}
+				fname='courseName'
+				handlerInput={handlerInput}
+			/>
+			<Button
+				text={BUTTON_SEARCH_TEXT}
+				onClick={() => handlerButtonClick(query)}
+			/>
 		</div>
 	);
 };

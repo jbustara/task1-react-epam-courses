@@ -9,19 +9,29 @@ import {
 } from '../../constants';
 
 import './courses.css';
+import { useState } from 'react';
 
 const Courses = () => {
-	const handler = () => {
-		alert('click');
+	const [list, setList] = useState(mockedCoursesList);
+	const handlerSearchBar = (data) => {
+		alert(data);
+		setList(
+			mockedCoursesList.filter(
+				(course) =>
+					course.title.toLowerCase().includes(data.toLowerCase()) ||
+					course.id.toLowerCase().includes(data.toLowerCase())
+			)
+		);
 	};
+
 	return (
 		<section>
 			<div className='courses search'>
-				<SearchBar onClick={handler} />
+				<SearchBar handlerButtonClick={handlerSearchBar} />
 				<Button text={BUTTON_NEW_TEXT} />
 			</div>
 			<div className='courses content'>
-				{mockedCoursesList.map((course) => {
+				{list.map((course) => {
 					return (
 						<CourseCard
 							key={course.id}

@@ -3,6 +3,7 @@ export const BUTTON_CARD_TEXT = 'Show course';
 export const BUTTON_NEW_TEXT = 'Add new course';
 export const BUTTON_HEADER_TEXT = 'Logout';
 export const INPUT_PLACEHOLDER = 'Enter course name';
+export const USERNAME = 'Camilo';
 
 export const mockedCoursesList = [
 	{

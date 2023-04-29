@@ -1,13 +1,13 @@
 import './input.css';
-const Input = ({ fname, placeholder, inputHandler }) => {
+const Input = ({ labelText, fname, placeholder, handlerInput }) => {
 	return (
 		<div>
-			<label for={fname}></label>
+			<label htmlFor={fname}>{labelText}</label>
 			<input
 				type='text'
-				name={fname}
+				id={fname}
 				placeholder={placeholder}
-				onChange={inputHandler}
+				onChange={(e) => handlerInput(e.target.value)}
 			/>
 		</div>
 	);
