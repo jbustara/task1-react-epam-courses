@@ -1,0 +1,11 @@
+.header {
+    margin: 10px;
+    width: 900px;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#login {
+    margin-right: 20px;
+}

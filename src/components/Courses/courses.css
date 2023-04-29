@@ -1,0 +1,14 @@
+.courses {
+    width: 900px;
+    display: flex;
+    margin: 40px 10px;
+
+}
+.search {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content {
+    flex-direction: column;
+}

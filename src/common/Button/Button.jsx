@@ -1,4 +1,3 @@
-const Button = ({ text, handler }) => {
-	return <button onClick={handler}>{text}</button>;
-};
+import './button.css';
+const Button = ({ text, onClick }) => <button onClick={onClick}>{text}</button>;
 export default Button;

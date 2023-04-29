@@ -1,0 +1,33 @@
+.courseCard {
+    width: 900px;
+    min-height: 250px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid green;
+}
+
+.description {
+    width: 500px;
+    margin-left: 10px;
+}
+.data {
+    width: 250px;
+    margin-right: 10px;
+}
+
+.data p {
+    margin: 10px 0;
+}
+#authors {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#button {
+    display: flex;
+    justify-content: center;
+}
