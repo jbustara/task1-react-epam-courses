@@ -1,7 +1,10 @@
 import Input from '../../../../common/Input/Input';
 import Button from '../../../../common/Button/Button';
 
-import { BUTTON_SEARCH_TEXT, INPUT_PLACEHOLDER_SEARCHBAR } from '../../../../constants';
+import {
+	BUTTON_SEARCH_TEXT,
+	INPUT_PLACEHOLDER_SEARCHBAR,
+} from '../../../../constants';
 
 import './searchBar.css';
 import { useState } from 'react';

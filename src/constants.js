@@ -3,12 +3,17 @@ export const BUTTON_CARD_TEXT = 'Show course';
 export const BUTTON_NEW_TEXT = 'Add new course';
 export const BUTTON_HEADER_TEXT = 'Logout';
 export const BUTTON_FORM_COURSE_TEXT = 'Create course';
-export const BUTTON_FORM_AUTHOR_TEXT = 'Create author';
+export const BUTTON_FORM_ADD_AUTHOR_TEXT = 'Add author';
+export const BUTTON_FORM_DELETE_AUTHOR_TEXT = 'Delete author';
+
 export const INPUT_PLACEHOLDER_SEARCHBAR = 'Enter course name';
 export const INPUT_PLACEHOLDER_TITLE_FORM = 'Enter title...';
 export const INPUT_PLACEHOLDER_AUTHOR_FORM = 'Enter author name...';
 export const INPUT_PLACEHOLDER_DURATION_FORM = 'Enter duration in minutes';
 export const INPUT_PLACEHOLDER_TEXTAREA_FORM = 'Enter description';
+
+export const EMPTY_AUTHOR_LIST = 'Author list is empty';
+
 export const USERNAME = 'Camilo';
 
 export const mockedCoursesList = [

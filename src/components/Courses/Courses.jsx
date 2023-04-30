@@ -41,6 +41,7 @@ const Courses = () => {
 					);
 				})}
 			</div>
+			<CreateCourse />
 		</section>
 	);
 };
