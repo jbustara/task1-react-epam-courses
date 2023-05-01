@@ -1,8 +1,11 @@
 import Button from '../../../common/Button/Button';
+
+import './author.css';
+
 const Author = ({ author, textButton, handlerClick }) => {
 	return (
-		<div>
-			{author}
+		<div className='author'>
+			<span>{author}</span>
 			<Button text={textButton} onClick={handlerClick} />
 		</div>
 	);

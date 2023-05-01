@@ -1,0 +1,60 @@
+.formCourse {
+  width: 900px;
+  margin: 10px;
+}
+
+.titleForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.descriptionForm {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+.descriptionForm textarea {
+  height: 100px;
+  resize: none;
+  padding: 5px;
+}
+
+.authorSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+
+.authorSection h3 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.col1 {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.col1 input{
+    width: 100%;
+}
+.col1 button{
+    margin: 5px 0;
+    align-self: center;
+}
+
+.col1 p{
+    margin: 5px 0;
+    font-size: x-large;
+}
+
+#formattedDate {
+    font-size: xx-large;
+    font-weight: bold;
+}
+.col2 {
+    width: 400px;
+}

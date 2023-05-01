@@ -1,0 +1,14 @@
+.author {
+   width: 400px; 
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin: 5px;
+}
+.author span {
+    width: 200px;
+} 
+
+.author Button {
+    width: 100px;
+}

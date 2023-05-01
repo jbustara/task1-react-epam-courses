@@ -4,6 +4,7 @@ export const BUTTON_NEW_TEXT = 'Add new course';
 export const BUTTON_HEADER_TEXT = 'Logout';
 export const BUTTON_FORM_COURSE_TEXT = 'Create course';
 export const BUTTON_FORM_ADD_AUTHOR_TEXT = 'Add author';
+export const BUTTON_FORM_CREATE_AUTHOR_TEXT = 'Create author';
 export const BUTTON_FORM_DELETE_AUTHOR_TEXT = 'Delete author';
 
 export const INPUT_PLACEHOLDER_SEARCHBAR = 'Enter course name';

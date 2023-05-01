@@ -20,14 +20,13 @@
 
 .data p {
     margin: 10px 0;
-}
-#authors {
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#button {
+
+.data .button {
     display: flex;
     justify-content: center;
 }

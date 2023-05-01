@@ -1,7 +1,5 @@
 import Button from '../../../../common/Button/Button';
 
-import { mockedAuthorsList } from '../../../../constants';
-
 import './courseCard.css';
 
 const CourseCard = ({
@@ -11,6 +9,7 @@ const CourseCard = ({
 	description,
 	textButton,
 	authors,
+	authorList,
 }) => {
 	return (
 		<div className='courseCard'>
@@ -19,14 +18,13 @@ const CourseCard = ({
 				<p>{description}</p>
 			</div>
 			<div className='data'>
-				<p id='authors'>
+				<p>
 					<strong>Authors: </strong>
 					<span>
 						{authors
 							.map((authorId) => {
-								return mockedAuthorsList.find(
-									(element) => element.id === authorId
-								)?.name;
+								return authorList.find((element) => element.id === authorId)
+									?.name;
 							})
 							.toString()}
 					</span>
@@ -39,7 +37,7 @@ const CourseCard = ({
 					<strong>Created: </strong>
 					{creationDate}
 				</p>
-				<div id='button'>
+				<div className='button'>
 					<Button text={textButton} />
 				</div>
 			</div>
