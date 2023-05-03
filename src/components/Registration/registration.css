@@ -1,0 +1,14 @@
+.registration {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.registration h2 {
+    margin-bottom: 20px;
+}
+
+.registration button {
+    margin-top: 20px;
+}
+

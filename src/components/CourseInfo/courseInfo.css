@@ -1,0 +1,30 @@
+.detailCourse {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  margin-left: 10px;
+}
+
+.detailCourse h2 {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.detailBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.detailDescription {
+  width: 500px;
+  margin-top: 10px;
+}
+
+.detailOthers {
+  width: 400px;
+}
+
+.detailOthers p {
+  margin: 10px 0;
+}

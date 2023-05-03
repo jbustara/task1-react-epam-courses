@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './createCourse.css';
 
@@ -20,8 +20,16 @@ import {
 	INPUT_PLACEHOLDER_TEXTAREA_FORM,
 	INPUT_PLACEHOLDER_TITLE_FORM,
 } from '../../constants';
+import { useNavigate } from 'react-router-dom';
+import { generateDate } from '../../helpers/dateGenerator';
 
-const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
+const CreateCourse = ({
+	setCourses,
+	coursesList,
+	setAuthorList,
+	authorList,
+}) => {
+	const navigate = useNavigate();
 	const [authors, setAuthors] = useState(authorList);
 	const [courseNew, setCourseNew] = useState({
 		title: '',
@@ -29,46 +37,62 @@ const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
 		description: '',
 		authors: [],
 	});
-	const [authorsCourse, setAuthorsCourse] = useState([]);
 	const [authorName, setAuthorName] = useState('');
+	const [authorsCourse, setAuthorsCourse] = useState([]);
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [duration, setDuration] = useState('');
+	useEffect(() => {
+		setCourseNew({
+			title,
+			duration,
+			description,
+			authors: authorsCourse,
+		});
+	}, [title, description, duration, authorsCourse]);
 
 	const addAuthor = (id) => {
 		const authorSelected = authors.find((author) => author.id === id);
 		setAuthorsCourse([...authorsCourse, authorSelected]);
 		setAuthors(authors.filter((item) => item.id !== id));
-		setCourseNew({ ...courseNew, authors: [...authorsCourse, authorSelected] });
 	};
 	const deleteAuthor = (id) => {
 		const authorSelected = authorsCourse.find((author) => author.id === id);
 		setAuthors([...authors, authorSelected]);
 		setAuthorsCourse(authorsCourse.filter((item) => item.id !== id));
-		setCourseNew({
-			...courseNew,
-			authors: authorsCourse.filter((item) => item.id !== id),
-		});
-	};
-	const handlerInputAuthor = (input) => {
-		setAuthorName(input);
-	};
-	const handlerInputTitle = (input) => {
-		setTitle(input);
-		setCourseNew({ ...courseNew, title: input });
-	};
-	const handlerInputDescription = (input) => {
-		setDescription(input);
-		setCourseNew({ ...courseNew, description: input });
-	};
-	const handlerInputDuration = (input) => {
-		setDuration(input);
-		setCourseNew({ ...courseNew, duration: input });
 	};
 	const createAuthor = () => {
 		const authorNew = { id: uuidv4(), name: authorName };
 		setAuthors([...authors, authorNew]);
-		updateAuthorList(authorNew);
+		setAuthorList([...authors, authorNew]);
+	};
+	const createCourse = (course) => {
+		const { title, description, duration, authors } = course;
+		if (
+			title === '' ||
+			duration === '' ||
+			description === '' ||
+			authors.lenght === 0
+		) {
+			return alert('Please, fill in all fields');
+		}
+		if (title.length < 2) return alert('Title must have at least 2 characters');
+		if (parseInt(duration) < 1)
+			return alert('Duration must last at least 1 minute');
+		if (authors.length === 0) return alert('Choose at least one author');
+
+		setCourses([
+			...coursesList,
+			{
+				id: uuidv4(),
+				title: title,
+				description: description,
+				creationDate: generateDate(),
+				duration: parseInt(duration),
+				authors: authors.map((i) => i.id),
+			},
+		]);
+		navigate('/courses');
 	};
 
 	return (
@@ -80,11 +104,12 @@ const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
 					minLenght='1'
 					labelText='Title'
 					placeholder={INPUT_PLACEHOLDER_TITLE_FORM}
-					handlerInput={handlerInputTitle}
+					handlerInput={setTitle}
 				></Input>
 				<Button
 					text={BUTTON_FORM_COURSE_TEXT}
-					onClick={() => createCourse({ ...courseNew })}
+					type='button'
+					onClick={() => createCourse(courseNew)}
 				/>
 			</div>
 			<div className='descriptionForm'>
@@ -92,7 +117,7 @@ const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
 				<textarea
 					id='descriptionCourse'
 					placeholder={INPUT_PLACEHOLDER_TEXTAREA_FORM}
-					onChange={(e) => handlerInputDescription(e.target.value)}
+					onChange={(e) => setDescription(e.target.value)}
 				></textarea>
 			</div>
 			<div className='authorSection'>
@@ -103,11 +128,12 @@ const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
 						fname='authorName'
 						minLenght='2'
 						labelText='Author name'
-						handlerInput={handlerInputAuthor}
+						handlerInput={setAuthorName}
 						placeholder={INPUT_PLACEHOLDER_AUTHOR_FORM}
 					></Input>
 					<Button
 						text={BUTTON_FORM_CREATE_AUTHOR_TEXT}
+						type='button'
 						onClick={createAuthor}
 					/>
 					<h3>Duration</h3>
@@ -117,7 +143,7 @@ const CreateCourse = ({ createCourse, updateAuthorList, authorList }) => {
 						min='1'
 						labelText='Duration'
 						placeholder={INPUT_PLACEHOLDER_DURATION_FORM}
-						handlerInput={handlerInputDuration}
+						handlerInput={setDuration}
 					></Input>
 					<p>
 						Duration: <span id='formattedDate'>{pipeDuration(duration)}</span>{' '}

@@ -6,16 +6,22 @@ export const BUTTON_FORM_COURSE_TEXT = 'Create course';
 export const BUTTON_FORM_ADD_AUTHOR_TEXT = 'Add author';
 export const BUTTON_FORM_CREATE_AUTHOR_TEXT = 'Create author';
 export const BUTTON_FORM_DELETE_AUTHOR_TEXT = 'Delete author';
+export const BUTTON_REGISTER_TEXT = 'Registration';
+export const BUTTON_LOGIN_TEXT = 'Login';
 
 export const INPUT_PLACEHOLDER_SEARCHBAR = 'Enter course name';
 export const INPUT_PLACEHOLDER_TITLE_FORM = 'Enter title...';
 export const INPUT_PLACEHOLDER_AUTHOR_FORM = 'Enter author name...';
 export const INPUT_PLACEHOLDER_DURATION_FORM = 'Enter duration in minutes';
 export const INPUT_PLACEHOLDER_TEXTAREA_FORM = 'Enter description';
+export const INPUT_PLACEHOLDER_REGISTER_NAME = 'Enter name';
+export const INPUT_PLACEHOLDER_REGISTER_EMAIL = 'Enter email';
+export const INPUT_PLACEHOLDER_REGISTER_PASSWORD = 'Enter password';
+
+export const URL_REGISTRATION = 'http://localhost:4000/register';
+export const URL_LOGIN = 'http://localhost:4000/login';
 
 export const EMPTY_AUTHOR_LIST = 'Author list is empty';
-
-export const USERNAME = 'Camilo';
 
 export const mockedCoursesList = [
 	{

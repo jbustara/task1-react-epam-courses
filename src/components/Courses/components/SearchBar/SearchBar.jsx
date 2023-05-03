@@ -7,26 +7,27 @@ import {
 } from '../../../../constants';
 
 import './searchBar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const SearchBar = ({ handlerButtonClick }) => {
+const SearchBar = ({ handlerSearchBar }) => {
 	const [query, setQuery] = useState('');
-	const handlerInput = (data) => {
-		setQuery(data);
-		if (!data) {
-			handlerButtonClick(''); //In case user clean search input
+	useEffect(() => {
+		if (!query) {
+			handlerSearchBar(''); //In case user clean search input
 		}
-	};
+	}, [query]);
 	return (
 		<div className='searchBar'>
 			<Input
 				placeholder={INPUT_PLACEHOLDER_SEARCHBAR}
+				type='text'
 				fname='courseName'
-				handlerInput={handlerInput}
+				handlerInput={setQuery}
 			/>
 			<Button
 				text={BUTTON_SEARCH_TEXT}
-				onClick={() => handlerButtonClick(query)}
+				type='button'
+				onClick={() => handlerSearchBar(query)}
 			/>
 		</div>
 	);

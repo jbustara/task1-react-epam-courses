@@ -1,6 +1,6 @@
 import './button.css';
-const Button = ({ text, onClick, onSubmit }) => (
-	<button type='button' id='btn' onClick={onClick} onSubmit={onSubmit}>
+const Button = ({ text, onClick, type }) => (
+	<button type={type} id='btn' onClick={onClick}>
 		{text}
 	</button>
 );
