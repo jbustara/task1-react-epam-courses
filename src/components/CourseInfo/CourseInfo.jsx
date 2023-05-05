@@ -1,12 +1,19 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
 import './courseInfo.css';
 import { pipeDuration } from '../../helpers/pipeDuration';
+import { useSelector } from 'react-redux';
+import { getAllAuthors, getAllCourses } from '../../helpers/selectors';
 
-const CourseInfo = ({ courseList, authorList }) => {
+const CourseInfo = () => {
 	const { courseId } = useParams();
-	const { title, description, creationDate, duration, authors } =
-		courseList.find((item) => item.id === courseId);
+	const courses = useSelector(getAllCourses);
+	const authorList = useSelector(getAllAuthors);
+	const { title, description, creationDate, duration, authors } = courses.find(
+		(item) => item.id === courseId
+	);
+	console.log('title :>> ', title);
+	if (!title) return <Navigate to='courses' />;
 	const authorsName = authorList.filter((item) => authors.includes(item.id));
 	return (
 		<section className='detailCourse'>

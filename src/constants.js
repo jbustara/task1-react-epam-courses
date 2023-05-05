@@ -20,6 +20,8 @@ export const INPUT_PLACEHOLDER_REGISTER_PASSWORD = 'Enter password';
 
 export const URL_REGISTRATION = 'http://localhost:4000/register';
 export const URL_LOGIN = 'http://localhost:4000/login';
+export const URL_GET_AUTHORS = 'http://localhost:4000/authors/all';
+export const URL_GET_COURSES = 'http://localhost:4000/courses/all';
 
 export const EMPTY_AUTHOR_LIST = 'Author list is empty';
 

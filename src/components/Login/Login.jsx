@@ -12,12 +12,14 @@ import {
 	URL_LOGIN,
 } from '../../constants';
 import { Link, useNavigate } from 'react-router-dom';
+import { saveUser } from '../../store/user/userSlice';
+import { useDispatch } from 'react-redux';
 
-const Login = ({ setUser }) => {
+const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!email || !password) return alert('Fill in all fields');
@@ -38,7 +40,7 @@ const Login = ({ setUser }) => {
 			}
 			const result = await response.json();
 			localStorage.setItem('token', result.result);
-			setUser(result.user.name);
+			dispatch(saveUser(result));
 			navigate('/courses');
 		} catch (error) {
 			alert(error);

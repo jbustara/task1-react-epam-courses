@@ -5,23 +5,28 @@ import './header.css';
 
 import { BUTTON_HEADER_TEXT } from '../../constants';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/user/userSlice';
+import { getUserStore } from '../../helpers/selectors';
 
-const Header = ({ user, setUser }) => {
+const Header = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { isAuth, name } = useSelector(getUserStore);
 
 	return (
 		<div>
 			<div className='header'>
 				<Logo />
-				{user && (
+				{isAuth && (
 					<div>
-						<span id='login'>{user}</span>
+						<span id='login'>{name}</span>
 						<Button
 							text={BUTTON_HEADER_TEXT}
 							type='button'
 							onClick={() => {
 								localStorage.removeItem('token');
-								setUser(null);
+								dispatch(logout());
 								navigate('/login');
 							}}
 						/>

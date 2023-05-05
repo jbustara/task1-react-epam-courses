@@ -1,7 +1,7 @@
 .courseCard {
     width: 900px;
     min-height: 250px;
-    margin: 10px 0;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,7 +26,11 @@
     text-overflow: ellipsis;
 }
 
-.data .button {
+.button {
     display: flex;
     justify-content: center;
+}
+
+.button button{
+    margin-left: 5px;
 }

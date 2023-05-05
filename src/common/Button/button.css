@@ -1,10 +1,15 @@
-#btn {
-    padding: 0 30px;
+.btn {
+    padding: 0 10px;
     height: 30px;
     border-color: blueviolet;
     background-color: white;
     cursor: pointer;
 }
-#btn:active{
-    background-color: gray;
+.btn:active{
+    background-color: gainsboro;
 }
+.btn svg {
+    width: 15px;
+}
+
+

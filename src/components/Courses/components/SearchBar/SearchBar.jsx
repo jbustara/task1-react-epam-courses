@@ -8,12 +8,16 @@ import {
 
 import './searchBar.css';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterCourses } from '../../../../store/courses/courseSlice';
 
-const SearchBar = ({ handlerSearchBar }) => {
+const SearchBar = () => {
 	const [query, setQuery] = useState('');
+	const dispatch = useDispatch();
 	useEffect(() => {
 		if (!query) {
-			handlerSearchBar(''); //In case user clean search input
+			//In case user clean search input
+			dispatch(filterCourses(''));
 		}
 	}, [query]);
 	return (
@@ -27,7 +31,7 @@ const SearchBar = ({ handlerSearchBar }) => {
 			<Button
 				text={BUTTON_SEARCH_TEXT}
 				type='button'
-				onClick={() => handlerSearchBar(query)}
+				onClick={() => dispatch(filterCourses(query))}
 			/>
 		</div>
 	);
