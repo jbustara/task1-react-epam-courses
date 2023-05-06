@@ -12,7 +12,7 @@ const CourseInfo = () => {
 	const { title, description, creationDate, duration, authors } = courses.find(
 		(item) => item.id === courseId
 	);
-	console.log('title :>> ', title);
+
 	if (!title) return <Navigate to='courses' />;
 	const authorsName = authorList.filter((item) => authors.includes(item.id));
 	return (
@@ -39,10 +39,16 @@ const CourseInfo = () => {
 						{creationDate}
 					</p>
 					<p>
-						<strong>Authors: </strong>
-						{authorsName.map((item) => {
-							return <p key={item.id}>{item.name}</p>;
-						})}
+						<strong>Authors:</strong>
+						<ul>
+							{authorsName.map((item) => {
+								return (
+									<li key={item.id}>
+										{item.name} <br></br>
+									</li>
+								);
+							})}
+						</ul>
 					</p>
 				</div>
 			</div>

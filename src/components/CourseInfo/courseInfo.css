@@ -28,3 +28,7 @@
 .detailOthers p {
   margin: 10px 0;
 }
+
+.detailOthers p ul li{
+  margin: 10px 0;
+}

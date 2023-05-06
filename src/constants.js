@@ -2,7 +2,8 @@ export const BUTTON_SEARCH_TEXT = 'Search';
 export const BUTTON_CARD_TEXT = 'Show course';
 export const BUTTON_NEW_TEXT = 'Add new course';
 export const BUTTON_HEADER_TEXT = 'Logout';
-export const BUTTON_FORM_COURSE_TEXT = 'Create course';
+export const CREATE_COURSE_TEXT = 'Create course';
+export const UPDATE_COURSE_TEXT = 'Update course';
 export const BUTTON_FORM_ADD_AUTHOR_TEXT = 'Add author';
 export const BUTTON_FORM_CREATE_AUTHOR_TEXT = 'Create author';
 export const BUTTON_FORM_DELETE_AUTHOR_TEXT = 'Delete author';
@@ -20,8 +21,13 @@ export const INPUT_PLACEHOLDER_REGISTER_PASSWORD = 'Enter password';
 
 export const URL_REGISTRATION = 'http://localhost:4000/register';
 export const URL_LOGIN = 'http://localhost:4000/login';
-export const URL_GET_AUTHORS = 'http://localhost:4000/authors/all';
+export const URL_LOGOUT = 'http://localhost:4000/logout';
+export const URL_GET_USER = 'http://localhost:4000/users/me';
 export const URL_GET_COURSES = 'http://localhost:4000/courses/all';
+export const URL_COURSES = 'http://localhost:4000/courses/';
+export const URL_POST_COURSES = 'http://localhost:4000/courses/add';
+export const URL_GET_AUTHORS = 'http://localhost:4000/authors/all';
+export const URL_POST_AUTHORS = 'http://localhost:4000/authors/add';
 
 export const EMPTY_AUTHOR_LIST = 'Author list is empty';
 

@@ -1,24 +1,26 @@
 import './input.css';
 const Input = ({
 	labelText,
-	minLenght,
+	minLength,
 	fname,
 	placeholder,
 	handlerInput,
 	type,
 	min,
+	value,
 }) => {
 	return (
 		<div className='inputBox'>
 			<label htmlFor={fname}>{labelText}</label>
 			<input
 				type={type}
-				minLength={minLenght}
+				minLength={minLength}
 				id={fname}
 				min={min}
+				defaultValue={value}
 				placeholder={placeholder}
 				onChange={(e) => handlerInput(e.target.value)}
-			/>
+			></input>
 		</div>
 	);
 };

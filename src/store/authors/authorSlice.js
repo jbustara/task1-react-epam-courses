@@ -1,21 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAuthors } from '../../services';
+import { getAuthors, createAuthor } from '../../services';
 
-const initialState = [];
+const initialState = {
+	list: [],
+	listFiltered: [],
+};
 
 const authorSlice = createSlice({
 	name: 'author',
 	initialState,
 	reducers: {
-		createAuthor: (state, { payload }) => {
-			state.push(payload);
+		updateFilteredAuthors: (state, { payload }) => {
+			state.listFiltered = payload;
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(getAuthors.fulfilled, (state, action) => {
-			state.splice(0, state.length, ...action.payload.result);
-		});
+		builder
+			.addCase(getAuthors.fulfilled, (state, { payload }) => {
+				if (payload.successful) {
+					state.list = payload.result;
+					state.listFiltered = payload.result;
+				}
+			})
+			.addCase(createAuthor.fulfilled, (state, { payload }) => {
+				if (payload.successful) {
+					state.list.push(payload.result);
+					state.listFiltered.push(payload.result);
+				}
+			});
 	},
 });
-export const { createAuthor } = authorSlice.actions;
+export const { updateFilteredAuthors } = authorSlice.actions;
+
 export default authorSlice.reducer;

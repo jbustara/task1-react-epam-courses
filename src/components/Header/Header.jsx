@@ -6,8 +6,8 @@ import './header.css';
 import { BUTTON_HEADER_TEXT } from '../../constants';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../store/user/userSlice';
 import { getUserStore } from '../../helpers/selectors';
+import { serverLogout } from '../../services';
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -25,8 +25,7 @@ const Header = () => {
 							text={BUTTON_HEADER_TEXT}
 							type='button'
 							onClick={() => {
-								localStorage.removeItem('token');
-								dispatch(logout());
+								dispatch(serverLogout());
 								navigate('/login');
 							}}
 						/>

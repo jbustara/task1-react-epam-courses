@@ -7,21 +7,24 @@ import { BUTTON_CARD_TEXT, BUTTON_NEW_TEXT } from '../../constants';
 import './courses.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCoursesStore } from '../../helpers/selectors';
+import { getCoursesStore, getUserStore } from '../../helpers/selectors';
 
 const Courses = () => {
 	const navigate = useNavigate();
-	const { filteredCourses } = useSelector(getCoursesStore);
 
+	const { role } = useSelector(getUserStore);
+	const { filteredCourses } = useSelector(getCoursesStore);
 	return (
 		<section>
 			<div className='courses search'>
 				<SearchBar />
-				<Button
-					text={BUTTON_NEW_TEXT}
-					type='button'
-					onClick={() => navigate('/courses/add')}
-				/>
+				{role === 'admin' && (
+					<Button
+						text={BUTTON_NEW_TEXT}
+						type='button'
+						onClick={() => navigate('/courses/add')}
+					/>
+				)}
 			</div>
 			<div className='courses content'>
 				{filteredCourses.map((course) => {

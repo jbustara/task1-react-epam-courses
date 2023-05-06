@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCourses } from '../../services';
+import {
+	deleteCourse,
+	getCourses,
+	createCourse,
+	updateCourse,
+} from '../../services';
 
 const initialState = {
 	allCourses: [],
@@ -18,30 +23,45 @@ const courseSlice = createSlice({
 					course.id.toLowerCase().includes(query.toLowerCase())
 			);
 		},
-		createCourse: (state, { payload }) => {
-			state.allCourses.push(payload);
-			state.filteredCourses.push(payload);
-		},
-		deleteCourse: (state, { payload }) => {
-			console.log('payload :>> ', payload);
-			console.log('state.allCourses :>> ', state.allCourses);
-			state.allCourses = state.allCourses.filter(
-				(course) => course.id !== payload
-			);
-			console.log('state.allCourses :>> ', state.allCourses);
-			state.filteredCourses = state.filteredCourses.filter(
-				(course) => course.id !== payload
-			);
-		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(getCourses.fulfilled, (state, action) => {
-			state.allCourses = action.payload.result;
-			state.filteredCourses = action.payload.result;
-		});
+		builder
+			.addCase(getCourses.fulfilled, (state, action) => {
+				state.allCourses = action.payload.result;
+				state.filteredCourses = action.payload.result;
+			})
+			.addCase(deleteCourse.fulfilled, (state, action) => {
+				const id = action.meta.arg.id;
+				if (action.payload.successful) {
+					state.allCourses = state.allCourses.filter(
+						(course) => course.id !== id
+					);
+					state.filteredCourses = state.filteredCourses.filter(
+						(course) => course.id !== id
+					);
+				}
+			})
+			.addCase(createCourse.fulfilled, (state, action) => {
+				if (action.payload.successful) {
+					state.allCourses.push(action.payload.result);
+					state.filteredCourses.push(action.payload.result);
+				}
+			})
+			.addCase(updateCourse.fulfilled, (state, action) => {
+				const id = action.meta.arg.courseId;
+				if (action.payload.successful) {
+					state.allCourses = state.allCourses.filter(
+						(course) => course.id !== id
+					);
+					state.allCourses.push(action.payload.result);
+					state.filteredCourses = state.allCourses.filter(
+						(course) => course.id !== id
+					);
+					state.filteredCourses.push(action.payload.result);
+				}
+			});
 	},
 });
 
-export const { filterCourses, createCourse, deleteCourse } =
-	courseSlice.actions;
+export const { filterCourses } = courseSlice.actions;
 export default courseSlice.reducer;

@@ -12,8 +12,8 @@ import {
 	URL_LOGIN,
 } from '../../constants';
 import { Link, useNavigate } from 'react-router-dom';
-import { saveUser } from '../../store/user/userSlice';
 import { useDispatch } from 'react-redux';
+import { getActualUser } from '../../services';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -40,7 +40,7 @@ const Login = () => {
 			}
 			const result = await response.json();
 			localStorage.setItem('token', result.result);
-			dispatch(saveUser(result));
+			dispatch(getActualUser(result.result));
 			navigate('/courses');
 		} catch (error) {
 			alert(error);
