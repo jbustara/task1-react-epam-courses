@@ -43,6 +43,7 @@ const CourseForm = ({ type }) => {
 	const courseInitial = useSelector(getAllCourses).find(
 		(item) => item.id === courseId
 	);
+
 	const [courseNew, setCourseNew] = useState({
 		title: courseInitial?.title ?? '',
 		duration: courseInitial?.duration ?? '',
@@ -51,6 +52,7 @@ const CourseForm = ({ type }) => {
 	});
 	//Author: list of authors to choose.
 	const authors = useSelector(getFilteredAuthors);
+
 	useEffect(() => {
 		if (type === UPDATE_COURSE_TEXT)
 			dispatch(
@@ -65,6 +67,7 @@ const CourseForm = ({ type }) => {
 			? authors.filter((aut) => courseInitial?.authors.includes(aut.id))
 			: []
 	);
+
 	const [authorName, setAuthorName] = useState('');
 
 	const addAuthor = (id) => {

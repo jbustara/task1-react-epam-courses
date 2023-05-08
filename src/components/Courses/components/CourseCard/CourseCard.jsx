@@ -43,7 +43,7 @@ const CourseCard = ({
 					<strong>Duration: </strong>
 					{<span>{pipeDuration(duration)} hours</span>}
 				</p>
-				<p>
+				<p className='createdDateInfo'>
 					<strong>Created: </strong>
 					{creationDate}
 				</p>

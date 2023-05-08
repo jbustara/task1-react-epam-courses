@@ -27,8 +27,10 @@ const courseSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(getCourses.fulfilled, (state, action) => {
-				state.allCourses = action.payload.result;
-				state.filteredCourses = action.payload.result;
+				if (action.payload.successful) {
+					state.allCourses = action.payload.result;
+					state.filteredCourses = action.payload.result;
+				}
 			})
 			.addCase(deleteCourse.fulfilled, (state, action) => {
 				const id = action.meta.arg.id;
